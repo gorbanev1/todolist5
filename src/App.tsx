@@ -37,7 +37,7 @@ export const App = () => {
         ]
     })
 
-    const deleteTask = (todolistId, taskId: string) => {
+    const deleteTask = (todolistId:string, taskId: string) => {
         const newTasks=tasks[todolistId]
         const filteredTasks = newTasks.filter(task => {
             return task.id !== taskId
@@ -58,7 +58,9 @@ export const App = () => {
 
     const createTask = (todolistId: string, title: string) => {
         const newTask = {id: v1(), title, isDone: false}
+        debugger
         setTasks({ ...tasks, [todolistId]: [newTask, ...tasks[todolistId]] })
+
     }
 
     const changeTaskStatus = (taskId: string, isDone: boolean) => {

@@ -26,10 +26,10 @@ export const TodolistItem = (props: Props) => {
     const [taskTitle, setTaskTitle] = useState('')
     const [error, setError] = useState<string | null>(null)
 
-    const createTaskHandler = (todolistId) => {
+    const createTaskHandler = () => {
         const trimmedTitle = taskTitle.trim()
         if (trimmedTitle !== '') {
-            createTask(todolistId, trimmedTitle)
+            createTask(id, trimmedTitle)
             setTaskTitle('')
         } else {
             setError('Title is required')
