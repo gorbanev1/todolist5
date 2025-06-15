@@ -8,7 +8,7 @@ type Props = {
     deleteTask: (todolistId:string, taskId: string) => void
     changeFilter: (todolistId: string, filter: FilterValues,) => void
     createTask: (todolistID:string, title: string) => void
-    changeTaskStatus: (taskId: string, isDone: boolean) => void
+    changeTaskStatus: (taskId: string, isDone: boolean, todolistId:string) => void
 
 }
 
@@ -69,7 +69,7 @@ export const TodolistItem = (props: Props) => {
 
                         const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>) => {
                             const newStatusValue = e.currentTarget.checked
-                            changeTaskStatus(task.id, newStatusValue)
+                            changeTaskStatus(task.id, newStatusValue, id)
                         }
 
                         return (
