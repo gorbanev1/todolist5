@@ -5,11 +5,11 @@ import {Button} from './Button'
 type Props = {
     todolist: Todolist
     tasks: Task[]
-    deleteTask: (todolistId:string, taskId: string) => void
+    deleteTask: (todolistId: string, taskId: string) => void
     changeFilter: (todolistId: string, filter: FilterValues,) => void
-    createTask: (todolistID:string, title: string) => void
-    changeTaskStatus: (taskId: string, isDone: boolean, todolistId:string) => void
-
+    createTask: (todolistID: string, title: string) => void
+    changeTaskStatus: (taskId: string, isDone: boolean, todolistId: string) => void
+    deleteTodolist: (id: string) => { void }
 }
 
 export const TodolistItem = (props: Props) => {
@@ -20,6 +20,7 @@ export const TodolistItem = (props: Props) => {
         changeFilter,
         createTask,
         changeTaskStatus,
+        deleteTodolist
 
     } = props
 
@@ -47,9 +48,13 @@ export const TodolistItem = (props: Props) => {
         }
     }
 
+
     return (
         <div>
+            <div className={'container'}>
             <h3>{title}</h3>
+            <Button  title={"Удалить"} onClick={()=>deleteTodolist(id)}></Button>
+            </div>
             <div>
                 <input className={error ? 'error' : ''}
                        value={taskTitle}
@@ -64,7 +69,7 @@ export const TodolistItem = (props: Props) => {
                 <ul>
                     {tasks.map(task => {
                         const deleteTaskHandler = () => {
-                            deleteTask(id,task.id)
+                            deleteTask(id, task.id)
                         }
 
                         const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>) => {
