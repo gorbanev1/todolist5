@@ -84,7 +84,7 @@ export const App = () => {
         <div className="app">
             {todolists.map((tdl) => {
                     let filteredTasks = tasks[tdl.id]
-                    console.log(filteredTasks === tasks[tdl.id])
+
                     if (tdl.filter === "active") filteredTasks = filteredTasks.filter(t => !t.isDone)
                     if (tdl.filter === "completed") filteredTasks = tasks[tdl.id].filter(t => t.isDone)
                     /*                      switch (tdl.filter) {
